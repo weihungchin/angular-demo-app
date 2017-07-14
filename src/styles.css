@@ -1,0 +1,26 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+html, body{
+    font-size:18px;
+    font-family: 'Montserrat', sans-serif;
+    height:100%;
+
+}
+
+.header-font{
+    font-size:2rem;
+    color:#333;
+}
+
+.mt-10{
+    margin-top:10rem!important;
+}
+
+.white-font{
+    color:white;
+}
+
+.btn{
+    cursor:pointer;
+}

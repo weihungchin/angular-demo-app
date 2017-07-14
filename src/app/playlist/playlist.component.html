@@ -1,0 +1,67 @@
+<div class="container">
+
+    <div class="text-center mt-5 mb-4 pb-4">
+        <h3>My Playlist</h3>
+        <hr/>
+        <pre>{{'Selected song : '}}{{selectedSongTitle}}</pre>
+    </div>
+
+    <div class="clearfix col-lg-8 offset-lg-2 mt-5 col-md-10 offset-md-1" *ngIf="isFormShow">
+        <form #f="ngForm" nonvalidate (ngSubmit) = "addSong(f)">
+            <div class="form-group"
+                [ngClass] = "{'has-danger': f.form.controls.title?.invalid && (f.form.controls.title?.dirty 
+                ||
+                inputTitle?.touched),
+                'has-success': inputTitle?.valid && (inputTitle?.dirty ||
+                inputTitle?.touched)}">
+                <label for="title">Title :</label>
+                <input type="text" 
+                name="title" 
+                class="form-control" 
+                placeholder="Song title" 
+                [(ngModel)]="newSong.title" 
+                required
+                [ngClass] = "{'form-control-danger':inputTitle?.touched}"
+                #inputTitle = "ngModel">
+
+                <div class="form-control-feedback" *ngIf="f.form.controls.title?.invalid && ( f.form.controls.title?.dirty || f.form.controls.title?.touched)">Song title is mandatory</div>
+
+            </div>
+
+            <div class="form-group"
+                
+            >
+                <label for="artist">Artist :</label>
+                <input type="text" 
+                name="artist" 
+                class="form-control" 
+                placeholder="Artist name" 
+             
+                >
+
+                 <div class="form-control-feedback" *ngIf="false">Must be 3 alphabetic characters or more</div>
+            </div>
+
+            <button type="submit" class="btn btn-primary pull-right" (click)="addSong(f)">Add</button>
+        </form>
+    </div>
+
+
+
+
+
+    <div class="clearfix"></div>
+    <div class="song-list col-lg-8 offset-lg-2 mt-5 col-md-10 offset-md-1 pb-5">
+        <div class="list-group">
+            <app-song [songList] = "listOfSong" (selectedSong) = "songSelected($event)"></app-song>
+        </div>
+    </div>
+
+
+
+    <div id="container-floating">
+        <div id="floating-button" data-toggle="tooltip" data-placement="left" data-original-title="Create" (click)="isFormShow = !isFormShow">
+            <p class="plus">+</p>
+            <li class="edit fa fa-pencil"></li>
+        </div>
+    </div>

@@ -1,0 +1,46 @@
+   <div class="container">
+
+  <div class="row mt-5">
+    <div class="col-lg-8 offset-lg-2">
+      <div class="form-group">
+        <div class="input-group">
+          <label for=""></label>
+          <input type="text" name="" id="" class="form-control" placeholder="Start typing to search..." aria-describedby="helpId" [formControl]="searchField">
+
+          <span class="input-group-addon"> 
+                <i class="fa fa-search"></i>
+            </span>
+        </div>
+      </div>
+
+      
+
+      <div class="text-center">
+        <p class="lead" *ngIf="loading">Loading magic...</p>
+      </div>
+
+      <div class="list-group">
+        <div class="list-group-item clearfix" *ngFor="let track of results | async">
+          <div class="w-100">
+            <img src="{{track.thumbnail}}" class="pull-left">
+            <a target="_blank" class="pl-4 pull-left" href="{{track.link}}">{{ track.track }}
+          </a>
+          <span class="pl-3 gray-faded pull-left">{{track.artist}}</span>
+
+            <span class="pull-right">
+       
+        <button class="btn btn-xs btn-danger">
+          <span class="fa fa-plus"></span>
+            </button>
+            </span>
+
+          </div>
+
+        </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
